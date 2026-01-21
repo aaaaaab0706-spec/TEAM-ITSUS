@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,11 +9,11 @@
     <style>
         /* --- CSS Reset & Variables --- */
         :root {
-            --bg-color: #0f1923;       /* 발로란트 다크 블루 */
-            --card-bg: #1f2731;        /* 카드 배경 */
-            --accent-color: #ff4655;   /* 발로란트 레드 */
-            --text-white: #ece8e1;     /* 오프 화이트 */
-            --text-gray: #768079;      /* 서브 텍스트 */
+            --bg-color: #0f1923;
+            --card-bg: #1f2731;
+            --accent-color: #ff4655;
+            --text-white: #ece8e1;
+            --text-gray: #768079;
             --font-main: 'Oswald', sans-serif;
             --font-kr: 'Noto Sans KR', sans-serif;
         }
@@ -59,7 +60,12 @@
         .logo span { color: var(--accent-color); }
 
         nav ul { display: flex; gap: 30px; }
-        nav li { font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        nav li { 
+            font-size: 0.9rem; 
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: 0.3s;
+        }
         nav li:hover { color: var(--accent-color); }
 
         /* --- Hero Section --- */
@@ -73,6 +79,13 @@
             background: radial-gradient(circle at center, #1f2731 0%, #0f1923 70%);
             position: relative;
             padding-top: 60px;
+        }
+
+        .team-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 30px rgba(255, 70, 85, 0.3));
         }
 
         .hero h1 {
@@ -162,8 +175,11 @@
             gap: 20px;
         }
 
-        /* Coach & Sub specific grids */
-        .grid-coach { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 400px; margin: 0 auto;}
+        .grid-coach { 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            max-width: 400px; 
+            margin: 0 auto;
+        }
         
         .card {
             background-color: var(--card-bg);
@@ -173,6 +189,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .card::before {
@@ -217,6 +234,36 @@
         .real-name {
             font-size: 0.9rem;
             color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .rank-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .rank-transcendent {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+        }
+
+        .rank-diamond {
+            background: linear-gradient(135deg, #b794f4, #9f7aea);
+            color: white;
+        }
+
+        .rank-platinum {
+            background: linear-gradient(135deg, #4ecdc4, #44b3aa);
+            color: white;
+        }
+
+        .rank-gold {
+            background: linear-gradient(135deg, #f7b731, #f39c12);
+            color: white;
         }
 
         .card-img {
@@ -231,6 +278,115 @@
             font-weight: 700;
             font-size: 1.5rem;
             border: 2px solid var(--accent-color);
+        }
+
+        /* --- Profile Modal --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--card-bg);
+            margin: 5% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 700px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #1f2731 0%, #0f1923 100%);
+            padding: 30px;
+            border-bottom: 2px solid var(--accent-color);
+            text-align: center;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .close {
+            color: var(--text-gray);
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            color: var(--accent-color);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-color: #0f1923;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            border: 3px solid var(--accent-color);
+        }
+
+        .modal-player-name {
+            font-family: var(--font-main);
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .modal-real-name {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+
+        .info-section {
+            margin-top: 30px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-label {
+            color: var(--text-gray);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .info-value {
+            color: var(--text-white);
+            font-weight: 400;
         }
 
         /* --- Footer --- */
@@ -249,9 +405,13 @@
             .hero h1 { font-size: 4rem; }
             .section-title { font-size: 2rem; }
             .grid { grid-template-columns: repeat(2, 1fr); }
+            .team-logo { width: 150px; height: 150px; }
+            nav ul { gap: 15px; }
+            nav li { font-size: 0.8rem; }
         }
         @media (max-width: 480px) {
             .grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
@@ -261,14 +421,15 @@
         <div class="logo">TEAM <span>ITS US</span></div>
         <nav>
             <ul>
-                <li>ROSTER</li>
-                <li>ABOUT</li>
+                <li onclick="document.getElementById('roster').scrollIntoView({behavior: 'smooth'})">ROSTER</li>
+                <li onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">ABOUT</li>
                 <li>MATCHES</li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='90' fill='%231f2731' stroke='%23ff4655' stroke-width='3'/%3E%3Ctext x='100' y='120' font-family='Oswald' font-size='80' font-weight='bold' text-anchor='middle' fill='%23ece8e1'%3EITS%3C/text%3E%3C/svg%3E" alt="ITS US Logo" class="team-logo">
         <p>VALORANT PROFESSIONAL TEAM</p>
         <h1>ITS <span>US</span></h1>
         <p>WE ARE READY TO DEFY THE LIMITS</p>
@@ -283,11 +444,12 @@
         <div class="roster-category">
             <div class="category-label">Head Coach</div>
             <div class="grid grid-coach">
-                <div class="card">
+                <div class="card" onclick="openModal('seojun-coach')">
                     <div class="card-img">KS</div>
                     <span class="role-badge">Head Coach</span>
                     <h3 class="player-name">SEOJUN</h3>
                     <p class="real-name">김서준 (Kim Seojun)</p>
+                    <span class="rank-badge rank-diamond">DIAMOND</span>
                 </div>
             </div>
         </div>
@@ -295,35 +457,40 @@
         <div class="roster-category">
             <div class="category-label">Main Squad</div>
             <div class="grid">
-                <div class="card">
+                <div class="card" onclick="openModal('jaejoong')">
                     <div class="card-img">JJ</div>
                     <span class="role-badge">Duelist</span>
                     <h3 class="player-name">JAEJOONG</h3>
                     <p class="real-name">재중</p>
+                    <span class="rank-badge rank-diamond">DIAMOND</span>
                 </div>
-                <div class="card">
+                <div class="card" onclick="openModal('minjun')">
                     <div class="card-img">MJ</div>
-                    <span class="role-badge">Sentinel</span>
+                    <span class="role-badge">Initiator</span>
                     <h3 class="player-name">MINJUN</h3>
                     <p class="real-name">민준</p>
+                    <span class="rank-badge rank-platinum">PLATINUM</span>
                 </div>
-                <div class="card">
+                <div class="card" onclick="openModal('gwanghyun')">
                     <div class="card-img">GH</div>
                     <span class="role-badge">Controller</span>
                     <h3 class="player-name">GWANGHYUN</h3>
                     <p class="real-name">광현</p>
+                    <span class="rank-badge rank-transcendent">TRANSCENDENT</span>
                 </div>
-                <div class="card">
+                <div class="card" onclick="openModal('jaemin')">
                     <div class="card-img">JM</div>
-                    <span class="role-badge">Initiator</span>
+                    <span class="role-badge">Sentinel</span>
                     <h3 class="player-name">JAEMIN</h3>
                     <p class="real-name">재민</p>
+                    <span class="rank-badge rank-diamond">DIAMOND</span>
                 </div>
-                <div class="card">
+                <div class="card" onclick="openModal('seojun-lee')">
                     <div class="card-img">LS</div>
                     <span class="role-badge">Flex</span>
                     <h3 class="player-name">SEOJUN</h3>
                     <p class="real-name">이서준 (Lee Seojun)</p>
+                    <span class="rank-badge rank-transcendent">TRANSCENDENT</span>
                 </div>
             </div>
         </div>
@@ -331,15 +498,50 @@
         <div class="roster-category">
             <div class="category-label">Sixth Man</div>
             <div class="grid grid-coach">
-                <div class="card" style="opacity: 0.8;">
+                <div class="card" style="opacity: 0.8;" onclick="openModal('jaeyeon')">
                     <div class="card-img">JY</div>
                     <span class="role-badge">Substitute</span>
                     <h3 class="player-name">JAEYEON</h3>
                     <p class="real-name">재연</p>
+                    <span class="rank-badge rank-gold">GOLD</span>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="profile-img" id="modalImg">JJ</div>
+                <h2 class="modal-player-name" id="modalName">JAEJOONG</h2>
+                <p class="modal-real-name" id="modalRealName">재중</p>
+                <span class="role-badge" id="modalRole">Duelist</span>
+                <span class="rank-badge" id="modalRank"></span>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <div class="info-row">
+                        <span class="info-label">Role</span>
+                        <span class="info-value" id="modalRoleDetail">Duelist</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Rank</span>
+                        <span class="info-value" id="modalRankDetail">Diamond</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Specialty</span>
+                        <span class="info-value" id="modalSpecialty">Aggressive Entry Fragging</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Main Agents</span>
+                        <span class="info-value" id="modalAgents">Jett, Raze, Reyna</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="logo" style="font-size: 1.2rem; margin-bottom: 10px;">TEAM <span>ITS US</span></div>
@@ -347,5 +549,119 @@
         <p>Designed for Victory.</p>
     </footer>
 
+    <script>
+        const playerData = {
+            'seojun-coach': {
+                initial: 'KS',
+                name: 'SEOJUN',
+                realName: '김서준 (Kim Seojun)',
+                role: 'Head Coach',
+                rank: 'Diamond',
+                rankClass: 'rank-diamond',
+                specialty: '전략 수립 및 팀 관리',
+                agents: 'All Agents (Strategic Overview)'
+            },
+            'jaejoong': {
+                initial: 'JJ',
+                name: 'JAEJOONG',
+                realName: '재중',
+                role: 'Duelist',
+                rank: 'Diamond',
+                rankClass: 'rank-diamond',
+                specialty: '공격적인 진입 프래깅',
+                agents: 'Jett, Raze, Reyna'
+            },
+            'minjun': {
+                initial: 'MJ',
+                name: 'MINJUN',
+                realName: '민준',
+                role: 'Initiator',
+                rank: 'Platinum',
+                rankClass: 'rank-platinum',
+                specialty: '정보 수집 및 팀 서포트',
+                agents: 'Sova, Fade, Breach'
+            },
+            'gwanghyun': {
+                initial: 'GH',
+                name: 'GWANGHYUN',
+                realName: '광현',
+                role: 'Controller',
+                rank: 'Transcendent',
+                rankClass: 'rank-transcendent',
+                specialty: '맵 컨트롤 및 스모크 운영',
+                agents: 'Omen, Astra, Viper'
+            },
+            'jaemin': {
+                initial: 'JM',
+                name: 'JAEMIN',
+                realName: '재민',
+                role: 'Sentinel',
+                rank: 'Diamond',
+                rankClass: 'rank-diamond',
+                specialty: '사이트 방어 및 정보 차단',
+                agents: 'Cypher, Killjoy, Chamber'
+            },
+            'seojun-lee': {
+                initial: 'LS',
+                name: 'SEOJUN',
+                realName: '이서준 (Lee Seojun)',
+                role: 'Flex',
+                rank: 'Transcendent',
+                rankClass: 'rank-transcendent',
+                specialty: '다양한 역할 수행 가능',
+                agents: 'Flexible (All Roles)'
+            },
+            'jaeyeon': {
+                initial: 'JY',
+                name: 'JAEYEON',
+                realName: '재연',
+                role: 'Substitute',
+                rank: 'Gold',
+                rankClass: 'rank-gold',
+                specialty: '팀 백업 및 전략적 교체',
+                agents: 'Multiple Agents'
+            }
+        };
+
+        function openModal(playerId) {
+            const player = playerData[playerId];
+            document.getElementById('modalImg').textContent = player.initial;
+            document.getElementById('modalName').textContent = player.name;
+            document.getElementById('modalRealName').textContent = player.realName;
+            document.getElementById('modalRole').textContent = player.role;
+            
+            const rankBadge = document.getElementById('modalRank');
+            rankBadge.textContent = player.rank.toUpperCase();
+            rankBadge.className = 'rank-badge ' + player.rankClass;
+            
+            document.getElementById('modalRoleDetail').textContent = player.role;
+            document.getElementById('modalRankDetail').textContent = player.rank;
+            document.getElementById('modalSpecialty').textContent = player.specialty;
+            document.getElementById('modalAgents').textContent = player.agents;
+            
+            document.getElementById('profileModal').style.display = 'block';
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'profileModal') {
+                document.getElementById('profileModal').style.display = 'none';
+            }
+        }
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
 </body>
 </html>
+```
+
+팀 ITS US의 발로란트 로스터 소개 사이트를 완성했습니다! 주요 특징은 다음과 같습니다:
+
+**추가된 기능:**
+- 각 선수 카드를 클릭하면 상세 프로필 모달이 나타납니다
+- 모달에는 역할, 랭크, 전문 분야, 주 요원 정보가 표시됩니다
